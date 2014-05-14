@@ -277,10 +277,7 @@ path {
 </div>
 
 
-<script src="/bower_components/d3/d3.js"></script>
-<script src="/bower_components/topojson/topojson.js"></script>
-<script src="/bower_components/jquery/dist/jquery.js"></script>
-<script src="/bower_components/typeahead.js/dist/typeahead.bundle.js"></script>
+<script src="/js/main.js"></script>
 <script>
 
 var width = 700,
@@ -493,9 +490,9 @@ d3.json("us.json", function(error, us) {
       return returnVal;
     });
 
-  svg.select('.legend').append('text').text('less <br/>proportion').attr('x', 10).attr('text-anchor', 'middle');
-  svg.select('.legend').append('text').text('equal <br/>proportion').attr('x', 30).attr('text-anchor', 'middle');
-  svg.select('.legend').append('text').text('greater <br/>proportion').attr('x', 50).attr('text-anchor', 'middle');
+  svg.select('.legend').append('text').text('less proportion').attr('x', 10).attr('text-anchor', 'middle');
+  svg.select('.legend').append('text').text('equal proportion').attr('x', 30).attr('text-anchor', 'middle');
+  svg.select('.legend').append('text').text('greater proportion').attr('x', 50).attr('text-anchor', 'middle');
 
 
 
