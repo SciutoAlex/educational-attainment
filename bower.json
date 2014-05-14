@@ -1,0 +1,26 @@
+{
+  "name": "bubble map",
+  "version": "0.0.1",
+  "authors": [
+    "SciutoAlex <SciutoAlex@gmail.com>"
+  ],
+  "description": "map",
+  "main": "index.html",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "topojson": "~1.6.13",
+    "d3": "~3.4.6",
+    "typeahead.js": "~0.10.2"
+  }
+}
