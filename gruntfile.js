@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   uglify: {
     my_target: {
       files: {
-        'js/main.js': ['bower_components/jquery/dist/jquery.js', 'bower_components/d3/d3.js', 'bower_components/topojson/topojson.js', 'bower_components/typeahead.js/dist/typeahead.bundle.js']
+        'js/main.js': ['bower_components/jquery/dist/jquery.js', 'bower_components/d3/d3.js', 'bower_components/topojson/topojson.js', 'bower_components/typeahead.js/dist/typeahead.bundle.js', 'main.js']
       }
     }
   }

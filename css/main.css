@@ -1,0 +1,230 @@
+
+html {
+  font-size:10px;
+  font-family:"museo-sans";
+}
+
+body {
+  background:#fffcf4;
+}
+
+.container {
+  width:1050px;
+  margin:0px auto;
+}
+
+.sidebar {
+  float:right;
+  width:340px;
+}
+
+
+/*SIDEBAR*/
+
+.sidebar {
+  margin-top:50px;
+}
+h1 {
+  font-family: "museo-slab";
+  font-size:3rem;
+  margin:3px 0;
+
+}
+
+.top {
+  padding: 20px 140px 10px 140px;
+  border-bottom:1px solid black;
+}
+
+.top p {
+margin: 14px 0;
+font-size: 1.4rem;
+line-height: 1.8rem;
+}
+
+.searchbar {
+  background: url('img/find.png') right center no-repeat;
+  background-size:15px;
+}
+.twitter-typeahead {
+  font-size:2rem;
+}
+.twitter-typeahead input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 340px;
+  font-size: 2rem;
+  font-family: "museo-sans";
+  padding: 3px;
+}
+
+.twitter-typeahead .tt-dropdown-menu {
+  font-size:1.2rem;
+  background:white;
+  width:100%;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,.1);
+-moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,.1);
+box-shadow: 0px 0px 10px 0px rgba(0,0,0,.1);
+}
+
+.tt-dropdown-menu .tt-suggestion p {
+  padding:6px 3px;
+  margin:0;
+}
+.tt-cursor {
+  cursor:pointer;
+  background-color: #d5cbb8;
+}
+
+
+
+.axes line {
+  stroke-width: 1px;
+stroke: black;
+}
+
+.bars .bar {
+  stroke-width:3px;
+}
+
+.stat {
+  float:left;
+  width:30%;
+  margin-right:5%;
+  text-align:center;
+}
+
+.stat:last-child {
+  margin-right:0px;
+}
+
+.stat p {
+  font-weight:700;
+  font-size:1.1rem;
+  margin-bottom:3px;
+  margin-top:3px;
+}
+
+.stat div {
+  font-weight:100;
+  font-size:3rem;
+}
+
+.name {
+  width: 300px;
+font-size: 2rem;
+font-family: "museo-sans";
+padding: 3px;
+}
+
+.hovered {
+  color:#888;
+}
+
+.buttons {
+  border-top: 1px solid;
+margin-top: 40px;
+font-size: 1.3rem;
+font-weight:bold;
+}
+
+.buttons a {
+  text-decoration:none;
+}
+
+.buttons a {
+  padding-top:10px;
+  display:inline-block;
+  text-align:center;
+  width:29%;
+  margin-right:5%;
+}
+
+.buttons a.featured{
+  border-top:3px solid black;
+}
+
+.buttons a:last-child {
+  margin-right:0;
+}
+
+.featured div, .featured p {
+  font-weight:900;
+}
+
+.example {
+  width:16%;
+  margin-right:2%;
+  padding:1%;
+  float:left;
+  cursor:pointer;
+  border:1px solid #ab9f8b;
+  min-height:50px;
+}
+
+.example p, .example h3 {
+  margin:0;
+  padding:0;
+}
+
+.examples div:last-child {
+
+  margin-right:0;
+}
+
+.examples {
+  overflow:auto;
+  margin-bottom:10px;
+  padding-bottom:10px;
+  border-bottom:1px solid black;
+}
+
+
+/*SVG STYLES*/
+path {
+  fill:#fff;
+  fill-opacity:.001;
+  stroke:none;
+}
+
+.land {
+  fill: #fff;
+  fill-opacity:1;
+}
+
+.border {
+  fill: none;
+  stroke: #faf4e5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.bubble {
+  fill-opacity: .3;
+  stroke-width: .5px;
+}
+
+.grad {
+  fill: #68b16d;
+  stroke: #68b16d;
+}
+
+.hs {
+  fill: #d09654;
+  stroke:  #d09654;
+}
+
+.counties .hovered {
+  stroke:#c4c58d;
+  stroke-width:1px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.counties .selected {
+  stroke:#32322c;
+  stroke-width:2px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
