@@ -40,14 +40,14 @@ h1 {
 }
 
 .top {
-  padding: 20px 40px 10px 40px;
+  padding: 20px 140px 10px 140px;
   border-bottom:1px solid black;
 }
 
 .top p {
-margin: 3px 0;
-font-size: 1.6rem;
-line-height: 2.3rem;
+margin: 14px 0;
+font-size: 1.4rem;
+line-height: 1.8rem;
 }
 
 .searchbar {
@@ -161,6 +161,33 @@ font-weight:bold;
   font-weight:900;
 }
 
+.example {
+  width:16%;
+  margin-right:2%;
+  padding:1%;
+  float:left;
+  cursor:pointer;
+  border:1px solid #ab9f8b;
+  min-height:50px;
+}
+
+.example p, .example h3 {
+  margin:0;
+  padding:0;
+}
+
+.examples div:last-child {
+
+  margin-right:0;
+}
+
+.examples {
+  overflow:auto;
+  margin-bottom:10px;
+  padding-bottom:10px;
+  border-bottom:1px solid black;
+}
+
 
 /*SVG STYLES*/
 path {
@@ -224,7 +251,10 @@ path {
       Educational attainment—the highest educational level a person achieves—varies across the country. Some counties are rich in people with professional and advanced degrees. Other counties are mostly filled with people who only finished high school. Education levels greatly affect the economic, social, and cultural life of a county.
     </p>
     <p>
-      Below is a map showing three different levels of educational attainment: high school, bachelors, and graduate levels. The map shows the proportion of residents over the age of 25 who have achieved a certain level of education. Green circles represent counties that have greater proportions of that educational achievement. Red circles represent counties with a smaller proportion of that educational achievement.
+      Below is a map showing three different levels of educational attainment: high school, bachelors, and graduate levels. The map shows the proportion of residents over the age of 25 who have achieved a certain level of education. Green circles represent counties that have greater proportions of that educational achievement. Red circles represent counties with a smaller proportion of that educational achievement. Black circles show counties that are nearly equal. Explore the map by hovering and clicking on counties or by searching for your county using the search feature.
+    </p>
+    <p>
+      <em>Data from American Community Survey from the US Census <a href="http://factfinder2.census.gov/faces/nav/jsf/pages/searchresults.xhtml?refresh=t">(link)</a>.</em>
     </p>
   </div>
   <svg class="map"></svg>
@@ -273,6 +303,31 @@ path {
       <a href="#" class="button featured" data-series = "bachelorPercent">Bachelors Proportion</a>
       <a href="#" class="button" data-series = "hsPercent">High School Proportion</a>
     </div>
+  </div>
+  <div class="examples">
+    <div class="example" data-name="Middlesex County, Massachusetts">
+      <h3>Middlesex County<br/>Massachusetts</h3>
+      <p>County home to both Harvard University and MIT.</p>
+    </div>
+    <div class="example" data-name="Loudoun County, Virginia">
+      <h3>Loudoun County<br/>Virginia</h3>
+      <p>Wealthiest county by median household income—$119,000.</p>
+    </div>
+    <div class="example" data-name="Buffalo County, South Dakota">
+      <h3>Buffalo County<br/>South Dakota</h3>
+      <p>Poorest county by median household income—$12,692.</p>
+    </div>
+    <div class="example" data-name="Los Angeles County, California">
+      <h3>Los Angeles County<br/>California</h3>
+      <p>Largest county in US by population.</p>
+    </div>
+    <div class="example" data-name="McMinn County, Tennessee">
+      <h3>McMinn County<br/>Tennessee</h3>
+      <p>County near the median for educational attainment.</p>
+    </div>
+  </div>
+  <div style="padding-top:10px" class="top">
+    <p style='text-align:center;'>Visualization by <a href="http://www.alexsciuto.com">Alex Sciuto</a>. Based on a <a href="http://bost.ocks.org/mike/bubble-map/">tutorial</a> by <a href="http://bost.ocks.org/mike/">Mike Bostock</a>.</p>
   </div>
 </div>
 
@@ -340,7 +395,7 @@ var countyTypeAhead = $('.typeahead').typeahead({
 });
 
 countyTypeAhead.on('typeahead:selected', function(e, data, datasetName) {
-  var functionToFire = $.proxy( refreshMap, data.context );
+  var functionToFire = $.proxy(refreshMap, data.context );
   functionToFire(data.data);
 });
 
@@ -352,6 +407,20 @@ $('.button').click(function() {
   $(this).siblings().removeClass('featured');
   $(this).addClass('featured')
 });
+
+//Connect Examples
+//============
+$('.example').click(function() {
+  var countyName = $(this).attr('data-name');
+  console.log(data);
+  engine.get(countyName, function(suggestions) {
+    console.log(suggestions);
+    suggestions.map(function(suggestion) {
+    var functionToFire = $.proxy(refreshMap, suggestion.context );
+    functionToFire(suggestion.data);
+    });
+  });
+})
 
 
 d3.json("us.json", function(error, us) {
@@ -490,9 +559,11 @@ d3.json("us.json", function(error, us) {
       return returnVal;
     });
 
-  svg.select('.legend').append('text').text('less proportion').attr('x', 10).attr('text-anchor', 'middle');
-  svg.select('.legend').append('text').text('equal proportion').attr('x', 30).attr('text-anchor', 'middle');
-  svg.select('.legend').append('text').text('greater proportion').attr('x', 50).attr('text-anchor', 'middle');
+  svg.select('.legend').append('g').attr('class', 'text').attr('transform', 'translate(0, 15)');
+  svg.select('.text').append('text').text('less').attr('x', 5).attr('text-anchor', 'end').style('fill', "#8e806a");
+  svg.select('.text').append('text').text('equal').attr('x', 25).attr('text-anchor', 'middle').style('fill', "#8e806a");
+  svg.select('.text').append('text').text('greater').attr('x', 45).attr('text-anchor', 'start').style('fill', "#8e806a");
+  svg.select('.text').append('text').text('educational attainment by county').attr('x', -40).attr('y', 15).attr('text-anchor', 'start');
 
 
 
@@ -580,7 +651,7 @@ d3.json("us.json", function(error, us) {
   function hoverMap(d) {
     d3.select(this).classed("hovered", true);
 
-    currentData = d;
+
 
     var hsPercent = d.properties.hsPercent;
     var gradPercent = d.properties.graduatePercent;
@@ -615,14 +686,15 @@ d3.json("us.json", function(error, us) {
   //==========
   var currentContext, currentData, currentBin;
   function refreshMap(d) {
-
+    console.log(currentData)
     if(this !== window) {
       currentContext = this;
+      currentData = d;
     }
-    var hsPercent = d.properties.hsPercent;
-    var gradPercent = d.properties.graduatePercent;
-    var bachelorPercent = d.properties.bachelorPercent;
-    currentBin = d.properties.bin;
+    var hsPercent = currentData.properties.hsPercent;
+    var gradPercent = currentData.properties.graduatePercent;
+    var bachelorPercent = currentData.properties.bachelorPercent;
+    currentBin = currentData.properties.bin;
 
     var basePercent;
     if(series == "graduatePercent") {
@@ -703,7 +775,7 @@ d3.json("us.json", function(error, us) {
       stats.eq(0).html(gradPercent + "%");
       stats.eq(1).html(bachelorPercent + "%");
       stats.eq(2).html(hsPercent + "%");
-      $('.typeahead').val(d.properties.name);
+      $('.typeahead').val(currentData.properties.name);
 
   }
 
@@ -745,11 +817,7 @@ d3.json("us.json", function(error, us) {
         .domain(d3.extent(data, function(d) { return d.properties[series]}))
         .range([0, histWidth]);
 
-    data.map(function(d) {
-      if(d.properties.name == currentData.properties.name) {
-        currentData = d;
-      }
-    })
+
     $.proxy(refreshMap(currentData), currentContext);
 
     histogramJoin
