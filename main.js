@@ -66,7 +66,8 @@ countyTypeAhead.on('typeahead:selected', function(e, data, datasetName) {
 
 //Connect Button Event
 //============
-$('.button').click(function() {
+$('.button').click(function(e) {
+  e.preventDefault();
   changeSeries($(this).attr('data-series'));
   $(this).siblings().removeClass('featured');
   $(this).addClass('featured')
