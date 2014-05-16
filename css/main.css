@@ -43,7 +43,7 @@ line-height: 1.8rem;
 }
 
 .searchbar {
-  background: url('img/find.png') right center no-repeat;
+  background: url('../img/find.png') right center no-repeat;
   background-size:15px;
 }
 .twitter-typeahead {
